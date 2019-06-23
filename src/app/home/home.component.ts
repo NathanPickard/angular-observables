@@ -3,13 +3,17 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/Rx';
 import { Observer, Subscription } from 'rxjs/Rx';
+import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
+
 export class HomeComponent implements OnInit, OnDestroy {
+
+  private firstObsSubscription: Subscription;
 
   numbersObsSubscription: Subscription;
   customObsSubscription: Subscription;
@@ -17,6 +21,12 @@ export class HomeComponent implements OnInit, OnDestroy {
   constructor() { }
 
   ngOnInit() {
+
+    this.firstObsSubscription = interval(period: 1000).subscribe(next: count => {
+      console.log(count);
+    })
+
+
     const myNumbers = Observable.interval(1000)
       .map(
         (data: number) => {

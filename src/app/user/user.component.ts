@@ -7,18 +7,17 @@ import { UsersService } from '../users.service';
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.css']
 })
+
 export class UserComponent implements OnInit {
   id: number;
 
   constructor(private route: ActivatedRoute, private usersService: UsersService) { }
 
   ngOnInit() {
-    this.route.params
-      .subscribe(
-        (params: Params) => {
-          this.id = +params['id'];
-        }
-      );
+    this.route.params.subscribe(
+      (params: Params) => {
+        this.id = +params['id'];
+      });
   }
 
   onActivate() {
