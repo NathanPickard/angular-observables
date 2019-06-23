@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
+
 import { UsersService } from '../users.service';
 
 @Component({
@@ -21,6 +22,8 @@ export class UserComponent implements OnInit {
   }
 
   onActivate() {
-    this.usersService.userActivated.next(this.id);
+    // this.usersService.userActivated.next(this.id);
+    // this.usersService.activatedEmitter.emit(true);
+    this.usersService.activatedEmitter.next(true);
   }
 }
